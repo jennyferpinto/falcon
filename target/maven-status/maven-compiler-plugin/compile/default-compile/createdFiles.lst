@@ -1,0 +1,6 @@
+io/falcon/assignment/Application.class
+io/falcon/assignment/PayloadController.class
+io/falcon/assignment/PayloadReply.class
+io/falcon/assignment/PayloadRepository.class
+io/falcon/assignment/PayloadService.class
+io/falcon/assignment/Payload.class

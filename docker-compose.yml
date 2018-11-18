@@ -1,0 +1,17 @@
+version: '3.3'
+services:
+  junior-java-backend-assignment:
+    build:
+      context: '.'
+    ports:
+      - '8083:8083/tcp'
+  database:
+    image: 'postgres:9.6'
+    environment:
+      - 'POSTGRES_DB=falcondb'
+      - 'POSTGRES_USER=falconuser'
+      - 'POSTGRES_PASSWORD=1234'
+    volumes:
+      - './database:/docker-entrypoint-initdb.d'
+    ports:
+      - '5432/tcp'
