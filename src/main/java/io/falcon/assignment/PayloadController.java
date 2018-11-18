@@ -23,11 +23,6 @@ public class PayloadController {
         return payloadRepository.findAll();
     }
 
-    @GetMapping("/orderedpayload")
-    public Page<Payload> getQuestions(Pageable pageable) {
-        return payloadRepository.findAll(pageable);
-    }
-
     @PostMapping("/payload")
     @ResponseBody
     public String createPayload(@RequestBody Payload payload) {
