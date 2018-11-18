@@ -14,9 +14,6 @@ import org.springframework.data.domain.Pageable;
 public class PayloadController {
 
     private static final String template = "Hello, %s!";
-    
-    // @Autowired
-    // private PayloadService payloadService;
 
     @Autowired
     private PayloadRepository payloadRepository;

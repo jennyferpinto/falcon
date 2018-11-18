@@ -50,7 +50,6 @@ public class Payload extends Model {
     public void setPalindromeLength(String content){
         Set<String> l = findPalindromes(content);
         longest_palindrome_size = getLargestPalindrome(l);
-        //longest_palindrome_size = getLargestPalindrome(findPalindromes(content));
     }
 
     public Integer getPalindromeLength(){
@@ -90,7 +89,7 @@ public class Payload extends Model {
         }
         return true;
     }
-    
+
     public static Integer getLargestPalindrome(Set<String> set) {
         int max = 0;
         String longestString = null;
