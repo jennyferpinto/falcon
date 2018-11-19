@@ -1,11 +1,7 @@
 package io.falcon.assignment;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -23,19 +19,6 @@ public class Payload extends Model {
     )
     private Long payloadId;
 
-    // @GeneratedValue(strategy=GenerationType.IDENTITY)
-    // private Long id;
-    // private String content;
-    // private String timestamp;
-    
-    // public Payload() {
-    // }
-    
-    // public Payload ( String content, String timestamp) {
-    //     this.content = content;
-    //     this.timestamp = timestamp;
-    // }
-
     @NotBlank
     @Size(min = 2, max = 100)
     private String content;
@@ -47,29 +30,27 @@ public class Payload extends Model {
         return this.content;
     }
 
-    public void setPalindromeLength(String content){
-        Set<String> l = findPalindromes(content);
-        longest_palindrome_size = getLargestPalindrome(l);
+    public Long getPayloadId(){
+        return payloadId;
     }
 
     public Integer getPalindromeLength(){
         return longest_palindrome_size;
     }
 
-    public Long getPayloadId(){
-        return payloadId;
+    public void setPalindromeLength(String content){
+        Set<String> l = findPalindromes(content);
+        longest_palindrome_size = getLargestPalindrome(l);
     }
 
     public Set<String> findPalindromes(String content){ 
         // loops through substrings in content to look for palindromes
         
-        Set<String> palindromeSet = new HashSet<>();
+        Set<String> palindromeSet = new HashSet<>(); // sets prevent duplicate palindromes to be saved
 
         for (int left = 0; left < content.length(); left++) {
-
             for ( int right = left + 1; right < content.length(); right++){
-                String pal = content.substring(left, right+1); 
-                
+                String pal = content.substring(left, right+1);  // substring non inclusive end point
                 if (isPalindrome(pal)) {
                     palindromeSet.add(pal);
                 }
@@ -78,8 +59,8 @@ public class Payload extends Model {
         return palindromeSet;
     }
 
-    // round 1 --> 0 1 ra // 0 2 rac // 0 3 race // 0 4 racec // 0 5 raceca // 0 6 racecar -- left = 0, right = 6
-    // round 2 --> 1 2 ac // 1 3 ace // 
+    // loop 1 --> 0:1 ra // 0 2 rac // 0:3 race // 0:4 racec // 0:5 raceca // 0:6 racecar 
+    // loop 2 --> 1:2 ac // 1:3 ace // 1:4 acec // 1:5 aceca // 1:6 acecar 
 
     static boolean isPalindrome(String s){ // checks whether the substring is a palindrome
         char[] chars = s.toCharArray();
@@ -94,22 +75,25 @@ public class Payload extends Model {
     public static Integer getLargestPalindrome(Set<String> set) {
         int max = 0;
         String longestString = null;
+        
         for (String s : set) {
             if (s.length() > max) {
                 max = s.length();
                 longestString = s;
             }
         }
-        if (longestString == null) { // when there are no palindromes in the list
+
+        if (longestString == null) { 
             return 0; 
         }
+
         return longestString.length();
     }
 
     @Override
     public String toString() {
         return String.format(
-                "Payload[i=%d, content='%s', createdAt='%s', longest_palindrome_length='%d']", 
-                payloadId, content, Payload.super.getCreatedAt(), longest_palindrome_size);
+                "Payload[i=%d, content='%s', timestamp='%s', longest_palindrome_length='%d']", 
+                payloadId, content, Payload.super.getTimestamp(), longest_palindrome_size);
     }
 }

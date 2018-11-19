@@ -11,27 +11,18 @@ import java.util.Date;
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
 @JsonIgnoreProperties(
-        value = {"createdAt", "updatedAt"},
+        value = {"timestamp"},
         allowGetters = true
 )
 public abstract class Model implements Serializable {
     // private static final long serialVersionUID = 1L;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "created_at", nullable = false, updatable = false)
+    @Column(name = "timestamp", nullable = false, updatable = false)
     @CreatedDate
-    private Date createdAt;
+    private Date timestamp;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "updated_at", nullable = false)
-    @LastModifiedDate
-    private Date updatedAt;
-
-    public Date getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public Date getCreatedAt(){
-        return createdAt;
+    public Date getTimestamp() {
+        return timestamp;
     }
 }
