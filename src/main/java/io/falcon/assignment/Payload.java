@@ -60,7 +60,8 @@ public class Payload extends Model {
         return payloadId;
     }
 
-    public Set<String> findPalindromes(String content){
+    public Set<String> findPalindromes(String content){ 
+        // loops through substrings in content to look for palindromes
         
         Set<String> palindromeSet = new HashSet<>();
 
@@ -80,7 +81,7 @@ public class Payload extends Model {
     // round 1 --> 0 1 ra // 0 2 rac // 0 3 race // 0 4 racec // 0 5 raceca // 0 6 racecar -- left = 0, right = 6
     // round 2 --> 1 2 ac // 1 3 ace // 
 
-    static boolean isPalindrome(String s){
+    static boolean isPalindrome(String s){ // checks whether the substring is a palindrome
         char[] chars = s.toCharArray();
         for (int i = 0; i < chars.length/2; i++){
             if (chars[i] != chars[chars.length - 1 - i]){
@@ -98,6 +99,9 @@ public class Payload extends Model {
                 max = s.length();
                 longestString = s;
             }
+        }
+        if (longestString == null) { // when there are no palindromes in the list
+            return 0; 
         }
         return longestString.length();
     }
