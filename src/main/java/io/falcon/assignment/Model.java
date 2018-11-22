@@ -15,8 +15,7 @@ import java.util.Date;
         allowGetters = true
 )
 public abstract class Model implements Serializable {
-    // private static final long serialVersionUID = 1L;
-
+    
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "timestamp", nullable = false, updatable = false)
     @CreatedDate

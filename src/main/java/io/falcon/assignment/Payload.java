@@ -30,6 +30,10 @@ public class Payload extends Model {
         return this.content;
     }
 
+    public void setContent(String s){
+        this.content = s;
+    }
+
     public Long getPayloadId(){
         return payloadId;
     }
@@ -37,8 +41,10 @@ public class Payload extends Model {
     public Integer getPalindromeLength(){
         return longest_palindrome_size;
     }
-
+    
     public void setPalindromeLength(String content){
+        // sets json parameter to largest found palindrome in content
+
         Set<String> l = findPalindromes(content);
         longest_palindrome_size = getLargestPalindrome(l);
     }
@@ -63,7 +69,9 @@ public class Payload extends Model {
     // loop 2 --> 1:2 ac // 1:3 ace // 1:4 acec // 1:5 aceca // 1:6 acecar 
 
     static boolean isPalindrome(String s){ // checks whether the substring is a palindrome
+        
         char[] chars = s.toCharArray();
+        
         for (int i = 0; i < chars.length/2; i++){
             if (chars[i] != chars[chars.length - 1 - i]){
                 return false;
@@ -73,6 +81,7 @@ public class Payload extends Model {
     }
 
     public static Integer getLargestPalindrome(Set<String> set) {
+        
         int max = 0;
         String longestString = null;
         
@@ -82,11 +91,9 @@ public class Payload extends Model {
                 longestString = s;
             }
         }
-
         if (longestString == null) { 
             return 0; 
         }
-
         return longestString.length();
     }
 

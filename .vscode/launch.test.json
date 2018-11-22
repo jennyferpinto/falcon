@@ -1,0 +1,30 @@
+{
+    "run": {
+        "default": "",
+        "items": [
+            {
+                "name": "junior-java-backend-assignment",
+                "projectName": "junior-java-backend-assignment",
+                "workingDirectory": "/home/jen/Desktop/falcon_assignment",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            }
+        ]
+    },
+    "debug": {
+        "default": "",
+        "items": [
+            {
+                "name": "junior-java-backend-assignment",
+                "projectName": "junior-java-backend-assignment",
+                "workingDirectory": "/home/jen/Desktop/falcon_assignment",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            }
+        ]
+    }
+}

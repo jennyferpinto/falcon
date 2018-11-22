@@ -9,9 +9,7 @@ import org.springframework.http.ResponseEntity;
 
 @RestController
 public class PayloadController {
-
-    private static final String template = "Hello, %s!";
-
+    
     @Autowired
     private PayloadRepository payloadRepository;
 
