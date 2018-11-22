@@ -6,11 +6,10 @@ Open a terminal window and navigate to the directory where the maven and docker 
 Run the following commands: 
 	
 	mvn clean package 
+	
 	docker-compose up
 
-'mvn clean package' will run the unit tests and start the application. To only run the tests without starting the application, execute the command below from the same directory:
-
-	mvn test
+Executing 'mvn clean package' and 'mvn test' will both run the unit tests 
 
 Once the application has started up, run the following command in a new terminal tab: 
 	
