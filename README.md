@@ -1,19 +1,24 @@
 README
 ======
-[Requirements](Requirements.md)
 
-Go to the directory where the maven and docker files application files are located and run the following commands: 
+Open a terminal window and navigate to the directory where the maven and docker files are located. 
+
+Run the following commands: 
 	
-	mvn clean package
+	mvn clean package 
 	docker-compose up
 
-Once the application has started run: 
+'mvn clean package' will run the unit tests and start the application. To only run the tests without starting the application, execute the command below from the same directory:
+
+	mvn test
+
+Once the application has started up, run the following command in a new terminal tab: 
 	
 	docker inspect 
 
-This finds the external IP address of the docker container, which should be specified along with the application's port, 8080.
+This finds the external IP address of the docker container, which should be specified along with the application's port, designated to 8080.
 
-Open a new terminal window and make a POST request to the /payload API endpoint with the IP address and port: 
+Open a new terminal window and make a POST request to the /payload API endpoint with this IP address and port: 
 
 	curl -H "Content-Type: application/json" -X POST -d '{"content":"racecar"}' http://172.18.0.3:8080/payload 
 
@@ -25,11 +30,8 @@ The following JSON response should be displayed:
 		"palindromeLength":7
 	} 
 
-You can also follow up with a GET request to the /payload/{id} API endpoint to retrieve the stored payload: 
+You can also follow up with a GET request to the /payload/{id} endpoint with the received ID to retrieve the stored payload: 
 
-	curl http://172.18.0.3:8080/payload/1  
+	curl http://172.18.0.3:8080/payload/1 
 
-
-In order to execute the unit tests, go to the application's top directory and run:
-	
-	mvn test
+Visting the base url http://172.18.0.3:8080/ on a web browser will provide a link. Clicking on the link executes a GET request to the /payload endpoint, which displays all database entries.
