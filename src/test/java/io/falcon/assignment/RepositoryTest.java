@@ -19,7 +19,7 @@ public class RepositoryTest {
 	private PayloadRepository repository;
 
 	@Test
-	public void testExample() throws Exception {
+	public void testDatabase() throws Exception {
 		
 		Payload p = new Payload(); 
 		p.setContent("aa");
