@@ -13,7 +13,7 @@ Executing 'mvn clean package' and 'mvn test' will both run the unit tests
 
 Once the application has started up, run the following command in a new terminal tab: 
 	
-	docker inspect 
+	docker inspect {container_id}
 
 This finds the external IP address of the docker container, which should be specified along with the application's port, designated to 8080.
 
